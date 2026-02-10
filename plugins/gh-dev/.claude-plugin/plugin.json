@@ -1,0 +1,8 @@
+{
+  "name": "gh-dev",
+  "description": "GitHub Project & Milestone based development workflow commands",
+  "version": "1.0.0",
+  "author": {
+    "name": "RyotaSugawara"
+  }
+}
