@@ -5,7 +5,7 @@ argument-hint: [issue-number (optional)]
 
 # Resume Development
 
-開発を再開します。
+Resume development from where you left off.
 
 ## Current Context
 
@@ -36,30 +36,30 @@ argument-hint: [issue-number (optional)]
 
 ## Your Task
 
-1. **状況把握:**
-   - Milestone進捗を確認し、現在のMilestoneを特定
-   - 現在のMilestoneに属するTodoタスクを優先
-   - 次に実行すべきタスクを特定
+1. **Assess the situation:**
+   - Check Milestone progress and identify the current Milestone
+   - Prioritize Todo tasks belonging to the current Milestone
+   - Identify the next task to work on
 
-2. **引数処理:**
-   - Issue番号が指定された場合（例: `/gh-dev:resume 69`）、そのIssueを優先
-   - 指定がない場合は、現在のMilestoneのTodoから選択
+2. **Process arguments:**
+   - If an Issue number is specified (e.g., `/gh-dev:resume 69`), prioritize that Issue
+   - If not specified, select from Todo items in the current Milestone
 
-3. **実装開始:**
-   - 選択したタスクの詳細を確認: `gh issue view <number>`
-   - 対応するブランチを作成: `git checkout -b feat/<issue>-<description>`
-   - CLAUDE.mdの規約に従って実装
-   - テストを含める
+3. **Start implementation:**
+   - Review the selected task details: `gh issue view <number>`
+   - Create a corresponding branch: `git checkout -b feat/<issue>-<description>`
+   - Implement following CLAUDE.md conventions
+   - Include tests
 
-4. **完了処理:**
-   - CLAUDE.mdの「Pre-Push Checklist」に従ってチェック実行
-   - PRを作成して自動クローズ:
+4. **Wrap up:**
+   - Run checks following the "Pre-Push Checklist" in CLAUDE.md
+   - Create a PR with auto-close:
      ```bash
      gh pr create --body "Closes #<issue>"
      ```
 
 ## Implementation Guidelines
 
-- CLAUDE.mdのルールを遵守すること
-- 小さな単位でコミット（1機能1コミット）
-- PRは1タスク完了ごとに作成
+- Follow all rules in CLAUDE.md
+- Commit in small units (one feature per commit)
+- Create a PR for each completed task
