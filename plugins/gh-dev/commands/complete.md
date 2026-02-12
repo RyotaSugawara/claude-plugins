@@ -5,11 +5,11 @@ argument-hint: <issue-number>
 
 # Complete Task
 
-タスクを完了し、PRを作成して Issue を自動クローズします。
+Complete the task, create a PR, and auto-close the linked Issue.
 
 ## Arguments
 
-- `$ARGUMENTS`: Issue 番号 (例: 35, 36)
+- `$ARGUMENTS`: Issue number (e.g., 35, 36)
 
 ## Current Open Issues
 
@@ -17,21 +17,21 @@ argument-hint: <issue-number>
 
 ## Your Task
 
-1. **変更をコミット:**
-   - 未コミットの変更があればコミット
-   - conventional commits 形式: `feat:`, `fix:`, etc.
+1. **Commit changes:**
+   - Commit any uncommitted changes
+   - Use conventional commits format: `feat:`, `fix:`, etc.
 
-2. **PRを作成:**
+2. **Create a PR:**
    ```bash
    gh pr create --title "feat: description" --body "Closes #$ARGUMENTS"
    ```
 
-3. **確認:**
-   - PR の URL を報告
-   - Issue がリンクされていることを確認
+3. **Verify:**
+   - Report the PR URL
+   - Confirm the Issue is linked
 
 ## Notes
 
-- PR マージ時に Issue は自動クローズされます
-- GitHub Project も自動更新されます
-- マージ前に CI が通ることを確認してください
+- The Issue will auto-close when the PR is merged
+- The GitHub Project will also update automatically
+- Make sure CI passes before merging

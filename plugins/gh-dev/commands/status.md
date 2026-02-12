@@ -4,7 +4,7 @@ description: Show current development progress and next tasks
 
 # Development Status
 
-現在の開発進捗を表示します。
+Display current development progress.
 
 ## Milestones
 
@@ -34,10 +34,10 @@ description: Show current development progress and next tasks
 
 ## Your Task
 
-上記の情報を元に、以下をサマリーとして報告:
+Based on the information above, report the following summary:
 
-1. **Milestone進捗**: 各Milestoneのopen/closed比率を表示
-2. **現在のMilestone**: 最も早い未完了Milestoneを特定
-3. **進捗率**: Done/Total の割合を計算して表示
-4. **次のタスク**: 現在のMilestoneのTodoアイテムを優先して提示
-5. **最近の成果**: 直近で完了したタスクをハイライト
+1. **Milestone progress**: Display the open/closed ratio for each Milestone
+2. **Current Milestone**: Identify the earliest incomplete Milestone
+3. **Progress rate**: Calculate and display the Done/Total ratio
+4. **Next tasks**: Prioritize and present Todo items from the current Milestone
+5. **Recent achievements**: Highlight recently completed tasks
