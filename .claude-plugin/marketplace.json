@@ -1,10 +1,14 @@
 {
-  "name": "claude-plugins",
+  "name": "ryota-plugins",
   "description": "Organization plugin marketplace for Claude Code",
+  "owner": {
+    "name": "RyotaSugawara",
+    "url": "https://github.com/RyotaSugawara"
+  },
   "plugins": [
     {
       "name": "gh-dev",
-      "path": "plugins/gh-dev"
+      "source": "plugins/gh-dev"
     }
   ]
 }
