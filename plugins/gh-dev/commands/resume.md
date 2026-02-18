@@ -13,13 +13,13 @@ Resume development from where you left off.
 !`gh api repos/:owner/:repo/milestones --jq '.[] | "\(.title): \(.open_issues) open / \(.closed_issues) closed"'`
 
 **Project Progress:**
-!`[ -n "$PROJECT_NUMBER" ] && gh project item-list "$PROJECT_NUMBER" --owner "${PROJECT_OWNER:-@me}" --limit 200 --format json | jq -r '.items | group_by(.status) | map({status: .[0].status, count: length}) | .[] | "\(.status): \(.count) items"' || echo "PROJECT_NUMBER not set, skipping project overview"`
+!`if [ -n "$PROJECT_NUMBER" ]; then gh project item-list "$PROJECT_NUMBER" --owner "${PROJECT_OWNER:-@me}" --limit 200 --format json | jq -r '.items | group_by(.status) | map({status: .[0].status, count: length}) | .[] | "\(.status): \(.count) items"'; else echo "PROJECT_NUMBER not set, skipping project overview"; fi`
 
 **Next Available Tasks (Todo):**
-!`[ -n "$PROJECT_NUMBER" ] && gh project item-list "$PROJECT_NUMBER" --owner "${PROJECT_OWNER:-@me}" --limit 200 --format json | jq -r '.items[] | select(.status == "Todo") | "#\(.content.number) - \(.content.title)"' | head -30 || gh issue list --state open --limit 30`
+!`if [ -n "$PROJECT_NUMBER" ]; then gh project item-list "$PROJECT_NUMBER" --owner "${PROJECT_OWNER:-@me}" --limit 200 --format json | jq -r '.items[] | select(.status == "Todo") | "#\(.content.number) - \(.content.title)"' | head -30; else gh issue list --state open --limit 30; fi`
 
 **Recently Completed:**
-!`[ -n "$PROJECT_NUMBER" ] && gh project item-list "$PROJECT_NUMBER" --owner "${PROJECT_OWNER:-@me}" --limit 200 --format json | jq -r '.items[] | select(.status == "Done") | "#\(.content.number) - \(.content.title)"' | head -5 || echo "PROJECT_NUMBER not set, skipping completed items"`
+!`if [ -n "$PROJECT_NUMBER" ]; then gh project item-list "$PROJECT_NUMBER" --owner "${PROJECT_OWNER:-@me}" --limit 200 --format json | jq -r '.items[] | select(.status == "Done") | "#\(.content.number) - \(.content.title)"' | head -5; else echo "PROJECT_NUMBER not set, skipping completed items"; fi`
 
 **Current Git Status:**
 !`git status --short`
