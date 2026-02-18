@@ -12,15 +12,15 @@ Display current development progress.
 
 ## Project Items Status
 
-!`[ -n "$PROJECT_NUMBER" ] && gh project item-list "$PROJECT_NUMBER" --owner "${PROJECT_OWNER:-@me}" --limit 200 --format json | jq -r '.items | group_by(.status) | map({status: .[0].status, count: length}) | .[] | "\(.status): \(.count)"' || echo "PROJECT_NUMBER not set, skipping project overview"`
+!`if [ -n "$PROJECT_NUMBER" ]; then gh project item-list "$PROJECT_NUMBER" --owner "${PROJECT_OWNER:-@me}" --limit 200 --format json | jq -r '.items | group_by(.status) | map({status: .[0].status, count: length}) | .[] | "\(.status): \(.count)"'; else echo "PROJECT_NUMBER not set, skipping project overview"; fi`
 
 ## Next Tasks (Todo Items)
 
-!`[ -n "$PROJECT_NUMBER" ] && gh project item-list "$PROJECT_NUMBER" --owner "${PROJECT_OWNER:-@me}" --limit 200 --format json | jq -r '.items[] | select(.status == "Todo") | "#\(.content.number) - \(.content.title)"' | head -20 || gh issue list --state open --limit 20`
+!`if [ -n "$PROJECT_NUMBER" ]; then gh project item-list "$PROJECT_NUMBER" --owner "${PROJECT_OWNER:-@me}" --limit 200 --format json | jq -r '.items[] | select(.status == "Todo") | "#\(.content.number) - \(.content.title)"' | head -20; else gh issue list --state open --limit 20; fi`
 
 ## Recently Completed (Done Items)
 
-!`[ -n "$PROJECT_NUMBER" ] && gh project item-list "$PROJECT_NUMBER" --owner "${PROJECT_OWNER:-@me}" --limit 200 --format json | jq -r '.items[] | select(.status == "Done") | "#\(.content.number) - \(.content.title)"' | head -10 || echo "PROJECT_NUMBER not set, skipping completed items"`
+!`if [ -n "$PROJECT_NUMBER" ]; then gh project item-list "$PROJECT_NUMBER" --owner "${PROJECT_OWNER:-@me}" --limit 200 --format json | jq -r '.items[] | select(.status == "Done") | "#\(.content.number) - \(.content.title)"' | head -10; else echo "PROJECT_NUMBER not set, skipping completed items"; fi`
 
 ## Development Rules
 
